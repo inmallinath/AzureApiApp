@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AzureApiApp.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace AzureApiApp
 {
@@ -34,7 +36,7 @@ namespace AzureApiApp
             if (_env.IsDevelopment())
             {
                 _connectionString = Environment.GetEnvironmentVariable("PSQL_CONNECTION_STRING");
-                services.AddDbContext<ApiContext>(options =>
+                services.AddDbContext<ApiDbContext>(options =>
                     options.UseNpgsql(_connectionString));
             }
             if(_env.IsProduction())
