@@ -45,6 +45,7 @@ namespace AzureApiApp
                 services.AddDbContext<ApiDbContext>(options =>
                                     options.UseNpgsql(_connectionString));
             }
+            
             services.AddMvc();
         }
 
